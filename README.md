@@ -22,9 +22,19 @@ codeigniter/
 
 ### With Composer
 
+* Add code below to composer.json
 ~~~
-$ cd /path/to/codeigniter/
-$ composer require kenjis/codeigniter-ss-twig
+"require": {
+    ...
+    "kenjis/codeigniter-ss-twig": "dev-master"
+},
+"repositories": [
+    ...
+    {
+        "type": "git",
+        "url": "https://github.com/tdhungit/codeigniter-ss-twig.git"
+    }
+]
 ~~~
 
 Install `libraries/Twig.php` to your CodeIgniter application folder:
@@ -38,30 +48,31 @@ $ php vendor/kenjis/codeigniter-ss-twig/install.php
 
 ### Without Composer
 
-Download the latest Twig v1.x: https://github.com/twigphp/Twig/releases
+Add composer.json file
+~~~
+{
+    "require": {
+        "kenjis/codeigniter-ss-twig": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/tdhungit/codeigniter-ss-twig.git"
+        }
+    ]
+}
+~~~
 
-Unzip and install to `application/third_party` folder.
+Install `libraries/Twig.php` to your CodeIgniter application folder:
 
-Download the latest codeigniter-ss-twig: https://github.com/kenjis/codeigniter-ss-twig/releases
+~~~
+$ php vendor/kenjis/codeigniter-ss-twig/install.php
+~~~
 
-Unzip and copy `codeigniter-ss-twig/libraries/Twig.php` to `application/libraries` folder.
 
-Remove comment marks below and fix the path for `Autoloader.php`:
-
-~~~diff
---- a/libraries/Twig.php
-+++ b/libraries/Twig.php
-@@ -9,10 +9,8 @@
-  */
- 
- // If you don't use Composer, uncomment below
--/*
- require_once APPPATH . 'third_party/Twig-1.xx.x/lib/Twig/Autoloader.php';
- Twig_Autoloader::register();
--*/
- 
- class Twig
- {
+Uncomment this line
+~~~
+require_once APPPATH . '../vendor/autoload.php';
 ~~~
 
 ## Usage
@@ -146,29 +157,3 @@ If your function explicitly outputs HTML code, you will want the raw output to b
 #### Documentation
 
 * http://twig.sensiolabs.org/documentation
-
-#### Samples
-
-* https://github.com/kenjis/codeigniter-twig-samples
-* https://github.com/kenjis/codeigniter-tettei-apps
-
-## How to Run Tests
-
-~~~
-$ cd codeigniter-ss-twig
-$ composer install
-$ phpunit
-~~~
-
-## Other Twig Implementations for CodeIgniter 3.x
-
-* https://github.com/davidsosavaldes/Attire
-
-## Related Projects for CodeIgniter 3.x
-
-* [CodeIgniter Composer Installer](https://github.com/kenjis/codeigniter-composer-installer)
-* [Cli for CodeIgniter 3.0](https://github.com/kenjis/codeigniter-cli)
-* [ci-phpunit-test](https://github.com/kenjis/ci-phpunit-test)
-* [CodeIgniter Doctrine](https://github.com/kenjis/codeigniter-doctrine)
-* [CodeIgniter Deployer](https://github.com/kenjis/codeigniter-deployer)
-* [CodeIgniter3 Filename Checker](https://github.com/kenjis/codeigniter3-filename-checker)
